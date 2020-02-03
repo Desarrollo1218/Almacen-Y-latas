@@ -1,0 +1,53 @@
+<br><br><div class="container">
+    <fieldset>
+        <Legend>
+            <div class="title">
+                <h1>Mercancias</h1>
+            </div>
+            <div class="float-right">
+                <!--<button class="btn btn-primary" disabled data-toggle="modal" data-target="#exampleModal">Nuevo</button>-->
+                <%= link_to "Nuevo", new_mercancia_path, class: "btn btn-info float-right" %>
+              </div>
+        </Legend>
+        <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                    <th scope="col" width="10%">codigo</th>
+                    <th scope="col" width="40%">Proveedor</th>
+                    <th scope="col" width="10%">Fecha</th>
+                    <th scope="col" width="10%">Total</th>
+                    <th scope="col">&#32;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%@mercancias.each do |mercancia| %>
+                  <tr>
+                    <td scope="row"><%= link_to mercancia.codigo, mercancia_path(mercancia), class: "redirect"%></td>
+                    <td scope="row"><%= link_to mercancia.proveedor, mercancia_path(mercancia), class: "redirect"%></td>
+                    <td scope="row"><%= link_to mercancia.fecha, mercancia_path(mercancia), class: "redirect"%></td>
+                    <td scope="row"><%= link_to mercancia.total, mercancia_path(mercancia), class: "redirect"%></td>
+                    <td>
+                      <%= link_to "Editar", edit_mercancia_path(mercancia), class: "btn btn-warning" %>
+                    </td>
+                  </tr>
+                <%end%>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th scope="col" width="10%">codigo</th>
+                    <th scope="col" width="40%">Proveedor</th>
+                    <th scope="col" width="10%">Fecha</th>
+                    <th scope="col" width="10%">Total</th>
+                    <th scope="col">&#32;</th>
+                  </tr>
+                </tfoot>
+            </table>
+        </div>
+    </fieldset>
+    <div class="footer">
+        <button>Traer Archivo de excel</button>
+    </div>
+  </div>
+  
+  

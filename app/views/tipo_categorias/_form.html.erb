@@ -1,0 +1,15 @@
+<br>
+<%= form_for(@tipocategoria, url:{action:"create"}) do |tc| %>
+    <%@tipocategoria.errors.full_messages.each do |errores|%>
+        <div style="background:#17a2b8"><%=error%></div>
+    <%end%>
+    <div class="row">
+        <div class="form-group col-lg-6">
+            <%= tc.text_field :nombre, placeholder: "Nombre", class: 'form-control' %>
+        </div>
+        <div class="form-grop col-lg-6">
+            <%= select_tag :id_tipo_categoria, options_for_select(@tipocategoriasopciones.collect{|o| [o.nombre,o.id]}) %>
+        <div>
+    </div>
+    <%= tc.submit "Registrar", class:"btn btn-info float-right" %>
+<%end%>

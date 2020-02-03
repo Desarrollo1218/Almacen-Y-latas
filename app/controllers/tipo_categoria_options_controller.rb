@@ -1,0 +1,2 @@
+class TipoCategoriaOptionsController < ApplicationController
+end

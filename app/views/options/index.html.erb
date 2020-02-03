@@ -1,0 +1,60 @@
+<br><br><div class="container">
+    <fieldset>
+        <Legend>
+            <div class="title">
+                <h1>Opciones</h1>
+            </div>
+            <div class="float-right">
+                <!--<button class="btn btn-primary" disabled data-toggle="modal" data-target="#exampleModal">Nuevo</button>-->
+                <%= link_to "Nuevo", new_option_path, class: "btn btn-info float-right" %>
+              </div>
+        </Legend>
+        <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" width="50%">Nombre</th>
+                  <th scope="col" width="20%">Estado</th>
+                  <th scope="col">&#32;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%@optiones.each do |option| %>
+                  <tr>
+                    <td scope="row"><%= link_to option.nombre, option, class: "redirect"%></td>
+                    <%
+                        estado = ""
+                        color_clase = ""
+                        if option.estado == "A"
+                            estado = "Activo"
+                            color_clase = "bg-light-blue"
+                        else
+                            estado = "Inactivo"
+                            color_clase = "bg-red"
+                        end 
+                    %>
+                    <td><span class="badge <%=color_clase%>"><%=estado%></span></td>
+                    <td>
+                      <%= link_to "Desactivar", option, method: :delete , class: "btn btn-danger" %>
+                      <%= link_to "Activate", activate_option_path(option),  class:"btn btn-primary"  %>
+                      <%= link_to "Editar", edit_option_path(option), class: "btn btn-warning" %>
+                    </td>
+                  </tr>
+                <%end%>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">&#32;</th>
+                  </tr>
+                </tfoot>
+            </table>
+        </div>
+    </fieldset>
+    <div class="footer">
+        <button>Traer Archivo de excel</button>
+    </div>
+  </div>
+  
+  
